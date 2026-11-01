@@ -1,0 +1,1810 @@
+IEEE TSYP14 – NEXUS Technical Challenge
+QABS:
+Ignition-Stage Wildfire Detection and
+Last-Mile Community Alerting
+for the Kroumirie-Mogods Forests, North-West Tunisia
+Application area: Environmental & Climate Sensing (wildfire),
+built as a community-deployable systemTable of Contents
+1 The Project Presentation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.1 Executive Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.2 Mission, Vision and Values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.3 Statement of the Problem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.4 Solution . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .1
+1
+1
+2
+4
+2 System Function and Features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2.1 System Architecture . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2.2 Detection and Graded-Confidence Decision Logic . . . . . . . . . . . . . . . . . . .
+2.3 Community Escalation Ladder and Inclusion by Design . . . . . . . . . . . . . . .
+2.4 Case Handling in Adverse Conditions . . . . . . . . . . . . . . . . . . . . . . . . . .4
+4
+5
+7
+8
+3 Powering the Node: Energy Budget . . . . . . . . . . . . . . . . . . . . . . . . . .
+3.1 System Power Requirements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3.2 Solar Power System . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3.3 Seasons, Autonomy and Open Checks . . . . . . . . . . . . . . . . . . . . . . . . .8
+8
+9
+9
+4 Components and Budget . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+4.1 Node Components, Functions and Prices . . . . . . . . . . . . . . . . . . . . . . . . 10
+4.2 Part Choices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+5 Mechanical and Electrical Design . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+5.1 Electrical Design: Simulation Checks in LTspice . . . . . . . . . . . . . . . . . . .
+5.2 Electrical Design: Schematic Capture in KiCad . . . . . . . . . . . . . . . . . . . .
+5.3 Mechanical Design . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .10
+10
+11
+13
+6 Communication, Edge AI and Software . . . . . . . . . . . . . . . . . . . . . . . .
+6.1 Communications Design . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6.2 Compliance with Tunisian ANF Rules . . . . . . . . . . . . . . . . . . . . . . . . .
+6.3 Range under Canopy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6.4 Edge AI Classifier and Data Strategy . . . . . . . . . . . . . . . . . . . . . . . . . .
+6.5 Tools and Software Stack . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6.6 Methodology, Feasibility and Requirements . . . . . . . . . . . . . . . . . . . . . .15
+15
+15
+16
+16
+17
+17
+7 Implementation Plan . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+7.1 Timeline for Implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+7.2 Detailed Actions and Resources . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+7.3 Team Organization and Roles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+7.4 Strategic Partnerships . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .18
+19
+19
+19
+20
+8 Market Analysis and Business Model . . . . . . . . . . . . . . . . . . . . . . . . .
+8.1 Market and Customers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+8.2 Competitive Landscape . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+8.3 Revenue Model and Unit Economics . . . . . . . . . . . . . . . . . . . . . . . . . .
+8.4 Budget Estimates . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+8.5 Return on Investment: an Avoided-Loss Framework . . . . . . . . . . . . . . . . .
+8.6 Three-Year Projection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .20
+20
+21
+21
+22
+22
+23
+9 Risk Management, Impact and Ethics . . . . . . . . . . . . . . . . . . . . . . . . .
+9.1 Risk Management and Mitigation Register . . . . . . . . . . . . . . . . . . . . . . .
+9.2 Humanitarian Impact and SDG Alignment . . . . . . . . . . . . . . . . . . . . . .
+9.3 Ethics, Equity, Transparency and Community Ownership . . . . . . . . . . . . . .
+9.4 Sustainability and Lifecycle Resilience . . . . . . . . . . . . . . . . . . . . . . . . .23
+23
+24
+25
+25
+10 General Conclusion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+iList of Figures
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+Qabs pipeline: five stages from ignition to people . . . . . . . . . . . . . . . . . . .
+System architecture: four layers, thirteen components . . . . . . . . . . . . . . . .
+Graded-confidence decision logic: two checks, three outcomes . . . . . . . . . . . .
+Community escalation ladder: three steps, five minutes apart . . . . . . . . . . . .
+LTspice simulation of the node’s supply current over one hour . . . . . . . . . . . .
+LTspice simulations: microphone and gas-sensor interfaces . . . . . . . . . . . . . .
+LTspice simulations: flame-sensor output and supply during transmission . . . . .
+Sensor-node schematic in KiCad (1/3): solar charging, battery and power rails . .
+Sensor-node schematic in KiCad (2/3): controller, radio and microphone . . . . . .
+Sensor-node schematic in KiCad (3/3): IR flame sensor and gas sensor . . . . . . .
+The Qabs sensor node (SolidWorks model): each sensor has its own opening, and
+the 2 W panel and LoRa antenna free it from the grid and from cables . . . . . . .
+Internal layout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Timeline for implementation, October 2026 to January 2028 (planned). Grey bars:
+the four stages of Table 15; red bar: fire season; diamonds: deadline and decision .
+4
+5
+6
+7
+9
+11
+11
+12
+13
+13
+14
+15
+19
+List of Tables
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+Values and what they mean in practice . . . . . . . . . . . . . . . . . . . . . . . . .
+The 2026 fire season in numbers . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Time from crackle to alert (design targets) . . . . . . . . . . . . . . . . . . . . . . .
+Graceful degradation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Base current budget without the gas heater (design target) . . . . . . . . . . . . .
+Energy budget before and after the duty-cycle redesign . . . . . . . . . . . . . . . .
+Node bill of materials . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Electrical interface checks in simulation . . . . . . . . . . . . . . . . . . . . . . . .
+Sensor-node schematic: design choices . . . . . . . . . . . . . . . . . . . . . . . . .
+Three purpose-built sensor ports . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+LoRa link budget . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Tools used and the results they produced . . . . . . . . . . . . . . . . . . . . . . .
+V-model: design levels and their verification . . . . . . . . . . . . . . . . . . . . . .
+Key system requirements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Four stages from prototype to corridor . . . . . . . . . . . . . . . . . . . . . . . . .
+Team roles . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Partners and stakeholders . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Market size (planning estimates) . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Competitive landscape . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Unit economics per installed node (TND) . . . . . . . . . . . . . . . . . . . . . . .
+Field pilot budget (2027) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Three-year projection (TND) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Risk register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+SDG alignment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Ethical principles and design rules . . . . . . . . . . . . . . . . . . . . . . . . . . .
+ii
+2
+2
+7
+8
+8
+9
+10
+11
+12
+14
+16
+17
+18
+18
+18
+19
+20
+21
+21
+22
+22
+23
+24
+25
+251 The Project Presentation
+1.1 Executive Summary
+Qabs closes the gap between a fire starting and the people nearby knowing about it. A 30-node
+pilot costs about 18,060 TND and pays for itself if it keeps about 7 ha of forest from burning over
+five years (indicative, pending damage data from the Directorate General of Forests, DGF).
+Problem: More than 15,000 ha of Tunisian forest burned in summer 2026, five times the
+2025 figure [10], and 95% of the fires had human causes [1]. The most vulnerable massifs (Sejnane,
+Nefza, Tabarka, Ain Draham) lie in Kroumirie-Mogods [15]. Regional alerts exist, but the last
+kilometre fails: the warning does not reach the right household in time. In Jendouba, 28.5% of
+residents are illiterate, so a text alert misses many of them [27]. And in the same weeks the grid
+failed: a night blackout from Greater Tunis to Tataouine on 14–15 July, then daily rolling cuts
+while more than 900 fires broke out in 72 hours [3, 4]. A warning that depends on mains power
+fails exactly when it is needed.
+Solution: Solar sensor nodes at trails, roads and picnic areas hear an ignition with a
+microphone and an on-device classifier. They confirm it with an infrared flame sensor (primary)
+and an MQ-5 gas sensor (corroborating), and relay it over a licence-free 868 MHz LoRa mesh.
+A backend grades each event as high, medium or low confidence; only confirmed events reach
+residents. An escalation ladder starts at T+0 with a local siren, a voice call answered by pressing
+1, and a Civil Protection alert. It adds a community guard at T+5 min and mosque or municipal
+loudspeakers at T+10 min.
+Status:
+• Electronics: Interfaces checked in LTspice; the KiCad schematic passes the electrical rules
+check.
+• Energy: We found and fixed a critical flaw: the gas sensor alone used 3,600 mAh a day.
+Duty-cycled, the node draws 53.6 mA in the nominal case, which a 2 W panel covers, and
+about 68 mA with converter losses, which needs a 1-in-10 heater cycle or a 3 W panel. Bench
+tests decide.
+• Radio: Settings are configured to Tunisian ANF limits (25 mW, under 1% airtime).
+• Software: The full decision chain runs in a Node-RED/MQTT simulation.
+• Mechanical and partner: Enclosure modelled in SolidWorks; a telecom infrastructure
+company is discussing hosting 2–3 gateways on its towers.
+• Community testimony: A resident of Cap Negro whose family home was destroyed by a
+fire in July 2026 reported that emergency response crews were unable to reach the site by
+road (Section 1.3.4).
+Market and impact: In mid-2026 the DGF announced start-up and AI programmes for early
+detection [15, 16]. Existing offers detect fires, but none we found closes the last mile for residents
+who cannot read. Qabs sells to the DGF and municipalities as equipment plus maintenance, or as
+a service. A node costs about 317 TND today and about 200 TND on a custom board. Qabs
+advances SDGs 13, 15, 11, 3 and 9.
+1.2 Mission, Vision and Values
+Mission: Detect forest fires in the Kroumirie-Mogods region at their earliest stages and deliver
+timely, actionable alerts to those capable of responding, enabling intervention within minutes.
+Vision: By 2030, every community living near Tunisia’s forests will receive timely fire alerts,
+ensuring that no one learns of a wildfire only when smoke appears on the horizon.
+1Value
+Inclusion first
+Honesty about
+limits
+Privacy by design
+Local ownership
+Frugality
+What it means in practice
+Every alert path is designed for the resident who cannot read or has no
+phone: sirens, voice calls, loudspeakers.
+Confidence levels are explicit, unconfirmed events never reach residents,
+and coverage limits are stated rather than hidden.
+Audio is classified on the node; raw sound is never transmitted or
+stored. Only event data leaves the device.
+Parts sourced in Tunisia, nodes repairable by local technicians,
+community guards trained as part of the system.
+Every milliamp and every dinar is justified; the design targets a 2 W
+panel and about 200 TND per node on a custom board.
+Table 1: Values and what they mean in practice
+1.3 Statement of the Problem
+Tunisia’s 2026 fire season burned about 12,000 ha of forest by the end of July and more than
+15,000 ha by early September, and 95% of the fires had human causes. In the worst-hit North-West,
+the weakest link is not detection but the warning: it rarely reaches the right household, in a usable
+form, in time.
+Indicator
+Forest burned, summer 2026 (to
+end of July)
+Forest burned,
+1 June–6 September 2026
+People affected by the fires
+Fires with human causes
+Forest burned 1 May–23 July,
+2026 vs 2025
+Fires in one 72-hour window
+(20–22 July)
+Largest event (Le Kef / Béja,
+21–29 July)
+Forest lost to fire since 2011
+Value
+≈12,000 ha; ≈12,100 ha from about 1,000 firesSource
+[1, 2]
+>15,000 ha, about +500% on summer 2025
+(<2,500 ha)
+≈41,479 (Tunisian Red Crescent)
+95%
+4,400 ha vs 2,705 ha (+63%)[10]
+≥900 (forest, brush, crops, houses)[3]
+11,824 ha mapped by satellite (all land cover,
+outside the corridor); 1,224 people in the burned
+area
+≈70,000 ha[13]
+[11]
+[1]
+[3]
+[15]
+Table 2: The 2026 fire season in numbers
+The season combined record heat, unusually dense dry vegetation after a wet winter, and daily
+planned power cuts [3].
+1.3.1
+Fire season, blackout season
+The fires came with the darkness. On the night of 14 to 15 July 2026, at about 23:00, the
+lights went out across areas from Greater Tunis to Tataouine while the night stayed above 32 ◦ C.
+Firefighters were called to free people trapped in lifts, and residents who phoned the electricity
+utility, STEG, got no answer [4]. Two days later STEG announced intermittent cuts in some 87
+localities, including Bou Salem and Ghardimaou in Jendouba governorate, with power returning
+“without notice” [5, 6]. By 20–22 July, when more than 900 fires broke out in 72 hours and
+temperatures reached 40–49 ◦ C, planned cuts had become a daily routine [3]. Peak demand
+reportedly approached 6,000 MW, about the country’s entire installed capacity (5,983 MW at
+the end of 2024) [7], and STEG’s chief executive warned that restoring the grid after a general
+blackout could take more than 24 hours [8].
+2Backup power is no guarantee: on one farm a generator overheated during a long cut and
+about 90% of the poultry died [9].
+What this means for a warning. A siren on mains power, a router feeding an alert app, a
+phone that cannot be recharged: each fails at the moment it is needed, in the very weeks when
+fires peak. Qabs therefore assumes the grid is absent. Every node, gateway and siren runs on
+its own panel and battery, and the first warning, the village siren, needs neither the grid nor the
+internet (Table 4).
+1.3.2
+Why Kroumirie-Mogods
+In June 2026 the Director General of Forests named Sejnane, Nefza, Tabarka and Ain Draham, all
+in this corridor, as Tunisia’s most vulnerable massifs [15]. The territory covers about 2,900 km2 .
+It holds about 48% of Tunisia’s cork oak, which has shrunk from 127,000 ha in 1952 to about
+63,000 ha [24]. It is also home to about 62% of the country’s forest communities, who live from
+cork, honey and aromatic plants [25]. Inside the corridor, 2026 fires struck Fernana and Balta-Bou
+Aouane in July, damaging homes and killing livestock [17], the Kharkalia forest at Cap Negro [21],
+a series of simultaneous fires around Nefza in August [22], and a lightning fire near Tabarka
+in April [12]. No public data gives today’s detection delay in the corridor; Phase 2 asks Civil
+Protection for alert logs to set that baseline. Jendouba also has Tunisia’s highest illiteracy rate:
+28.5%, and 36.5% among women, against 17.3% nationally [27].
+1.3.3
+Fires start where people are, and the warning stops short
+The forest administration names camping, cooking, farm machinery, power-line sparks, stubble
+burning, cigarettes and arson as the main causes [16]. Many ignitions happen at night: in July
+2021, 18 forest fires started between 20:00 and 05:00, and natural causes were at most 4% [18].
+Ignition points are therefore predictable: trails, forest roads, picnic areas and field edges. A sensor
+there catches a fire at the scale of one burning bush, and sound and infrared work in darkness.
+Speed decides the outcome. In 2021, Civil Protection reached 60% of fires in under 15 minutes,
+and 72% of fires were contained thanks to rapid response [19]. Yet field reports are still collected
+on paper and spreadsheets [20], and public warnings are regional and text- or media-based. They
+do not tell a shepherd near Ain Draham that a fire started 800 m up the trail five minutes ago.
+This is the challenge’s own problem statement: losses come from data that does not reach a
+household in time to act.
+1.3.4
+A voice from Cap Negro: when trucks cannot reach the fire
+In July 2026 fire swept through the Kharkalia forest at Cap Negro, in the Nefza area of Béja
+governorate, inside the corridor [21]. We spoke with a young woman whose family home there
+burned that summer. Hers is one account from one conversation, not yet a structured interview,
+but it names a gap that detection alone does not close:
+• No road to the fire. She told us the areas that burned cannot be reached by vehicle,
+so Civil Protection trucks could not get close. Reporting on the Nefza fires a month later
+describes the same constraint: rugged terrain slows the tanker trucks [22].
+• No other way in, in time. In her experience no helicopter or other specialised equipment
+arrived in time, and the fire grew while crews looked for a way to reach it.
+What this changes for Qabs. Where trucks cannot follow, the minutes gained at ignition
+are worth the most, and the first warning must reach the people already there. Qabs therefore:
+• stores the nearest track and access point for every node, so the first alert tells crews and
+guards how to get there, not only where the fire is;
+3• flags hard-to-reach nodes on the dashboard, so Civil Protection can request aerial or heavy
+means at the first alert instead of after a failed ground approach;
+• warns residents and the community guard at T+0, so households can protect themselves
+and leave early when help may be delayed;
+• gives priority, when siting nodes, to ignition points far from any road, where a late detection
+costs the most.
+What residents need. Together, the fire data, the census and this testimony define the
+need Qabs must meet: a warning understood without reading, that works when the grid and the
+network fail, that tells responders exactly where the fire is and how to reach it, and that is rarely
+wrong, so people keep trusting it.
+1.4 Solution
+Qabs is a complete chain, not just a sensor. It hears an ignition at the trail, confirms it, carries it
+over its own radio network, grades it, and escalates it until a person acknowledges. The five stages
+map directly onto the challenge’s Detects → Communicates → Coordinates → Enables Response.
+Figure 1: Qabs pipeline: five stages from ignition to people
+What sets Qabs apart: it watches where fires start, confirms before it alarms, escalates until
+someone acts, keeps its sirens and LoRa receivers sounding through power and network outages,
+and is built and repaired in Tunisia. Figure 11 shows the sensor node that starts this chain.
+2 System Function and Features
+2.1 System Architecture
+Qabs has four layers: field devices at the trail, a LoRa network, a backend that decides and
+escalates, and the people who act (Figure 2). Sirens keep working even when the backend or the
+internet fails.
+The sensor node runs detection and confirmation itself. The siren unit and household receivers
+listen on LoRa, so they sound without the internet. Household receivers work only inside mesh
+range, a limit we state rather than hide.
+4Figure 2: System architecture: four layers, thirteen components
+What is new in this architecture.
+• Listening at the ignition point: sound and an on-device classifier catch a fire at the
+scale of one burning bush, day or night, where cameras and satellites see it only once it is
+visible from afar.
+• Graded confirmation instead of an AND gate: no real fire is silently dropped, and
+unconfirmed events never reach residents.
+• A first warning that needs no internet: sirens are triggered directly over LoRa, so the
+warning survives grid and network failures.
+• An alert that climbs until a person acts: siren and voice call first, then guards and
+loudspeakers, so people who cannot read or have no phone are reached too.
+2.2 Detection and Graded-Confidence Decision Logic
+The microphone only nominates a candidate; confirmation decides what happens next. The IR
+flame sensor is the primary confirmation, and the gas sensor can raise confidence but never block
+an alert (Figure 3).
+Why graded, not an AND gate. Our first design required the microphone and the gas
+sensor to agree. Reviewing it, we found a silent failure: outdoors, wind disperses combustion
+gases, so the MQ-5 often reads nothing and a real fire would have been dropped without a trace.
+Now every candidate is kept, and the strength of confirmation decides who is told.
+5Microphone
+candidate
+crackle in 3
+of 5 windows
+IR flame
+confirms?
+yes
+High confidence: the IR sensor sees a flame
+Full alert: siren, voice calls and Civil Protection at once
+no
+Gas
+confirms?
+Medium confidence: gas
+confirms, IR inconclusive
+yes
+Civil Protection notified first; siren armed, not sounded
+no
+Low confidence: no confirmation
+Logged as an unconfirmed can-
+didate; never sent to residents
+Figure 3: Graded-confidence decision logic: two checks, three outcomes
+How confirmation works.
+• IR flicker. Flames flicker at roughly 1–15 Hz, but so can sunlight through moving leaves.
+The IR sensor therefore looks through a narrow shroud at the spot it watches, never at open
+sky. Cheap IR modules see a lighter flame at about 1 m and saturate in daylight. Range
+grows with flame size: a 1 m2 fire radiates thousands of times more than a lighter, so tens
+of metres are plausible in shade, but this is unproven. Phase 2 measures range in sun and
+shade and evaluates a filtered 4.3 μm pyroelectric flame sensor.
+• Gas against a baseline. The heater runs for 60 s every 6 minutes, and gas is read only at
+the end of each period, once the element is warm, against readings taken at the same point
+of earlier periods. The datasheet’s 24-hour preheat sets absolute accuracy, which a relative
+baseline does not need; Phase 2 checks that 60 s is enough outdoors. A candidate between
+periods starts one at once, and a gas confirmation about a minute later upgrades low to
+medium.
+• Persistence (design rule). Crackle repeating on one node for two minutes is upgraded to
+medium even without IR or gas. If IR proves shorter than 5 m outdoors, most real fires
+take this path: Civil Protection is alerted about two minutes after the first crackle instead
+of 15 s, and residents once a guard or Civil Protection confirms on the dashboard.
+• Scope. Qabs detects the flaming stage. A cigarette smouldering in litter makes no crackle;
+Phase 2 tests a low-power VOC gas sensor (for example the Bosch BME688) as a smoke
+channel for that phase.
+• Site profiles. At designated barbecue spots, alerts go first to the forest guard and Civil
+Protection. Residents are alerted if the event persists or spreads.
+6Step
+Candidate raised (3 of 5 overlapping 1-second
+windows)
+Confirmation window
+LoRa transfer over up to 3 hops
+Backend decision
+Civil Protection alerted, siren sounding
+Residents’ phones ringing
+Target
+≈3 s
+Up to 5 s
+≈1–5 s
+Under 1 s
+≈15 s after the
+crackle
+≈30 s
+Table 3: Time from crackle to alert (design targets)
+2.3 Community Escalation Ladder and Inclusion by Design
+Every confirmed alert climbs a three-step ladder, one step every 5 minutes, until someone handles
+it (Figure 4). Voice comes before text, and the last step reaches people who have no phone.
+Why this order. The siren needs no network and also reaches visitors on the trail. Voice
+replaces SMS because 28.5% of Jendouba residents, and 36.5% of women, are illiterate. Calls play
+a short recorded message in Tunisian Arabic: where the fire is, which way to move, and “press 1
+if you heard this”. Civil Protection is alerted at T+0, never after residents. A community guard
+checks on foot at T+5, catching phones that are off and helping elderly neighbours. Mosque and
+municipal loudspeakers at T+10 reach homes with no phone.
+Figure 4: Community escalation ladder: three steps, five minutes apart
+Who is called. Municipalities build an opt-in call list at community meetings, linking
+households to the nodes that cover them, plus one guard per hamlet. Pressing 1 only stops further
+calls to that household. The ladder climbs to T+5 and T+10 unless Civil Protection or the guard
+has marked the event as handled.
+Honest limits. Household receivers work only within mesh range; voice calls need mobile
+coverage at the home; and a siren helps only if people hear it and know what it means. A 110 dB
+siren (at 1 m) falls to about 70 dB at 100 m and 56 dB at 500 m in open air, less behind trees
+and walls, so each siren stands at the centre of one hamlet: the pilot’s three sirens serve three
+hamlets. Each pilot also includes a drill and one instruction: leave the forest and go to the agreed
+meeting point.
+72.4 Case Handling in Adverse Conditions
+Table 4 shows which alert paths survive each failure. Sirens and LoRa receivers need neither the
+grid nor the network; voice calls and the dashboard need the mobile network and the backend.
+Failure
+Grid power cut
+Internet or mobile network
+down at the gateway
+Backend unreachable
+One node or gateway fails
+Gas sensor fails
+What still works
+Nodes, gateways, sirens and battery-backed receivers; voice
+calls only while mobile towers keep power
+Local sirens still trigger over LoRa; calls and dashboard wait
+for the backhaul, events queue
+Gateways apply the node’s grading: a high-confidence event
+sounds the nearest siren
+The mesh routes around it; the missing heartbeat flags it for
+repair
+Detection continues on microphone plus IR
+Table 4: Graceful degradation
+3 Powering the Node: Energy Budget
+In the nominal case the node averages 53.6 mA, or 1,286 mAh a day, and a 2 W panel covers it
+with about +114 mAh a day to spare. Counting the losses of the 5 V heater rail, the conservative
+case is about 68 mA and the margin turns negative, so the design keeps two fallbacks: a 1-in-10
+heater cycle or a 3 W panel. Both cases rest on a base current that Phase 2 must measure
+(Table 5).
+3.1 System Power Requirements
+Gas sensors of the MQ family only react when their sensing element is warm, so the MQ-5 carries
+a tiny built-in heater: a coil of about 31 Ω inside a ceramic tube, using under 0.8 W [37]. It is
+sealed under the sensor’s own stainless-steel flame-arrestor gauze, designed not to ignite even the
+flammable gas it measures, so it is not a fire risk (Section 5.3). Its real cost is energy: it draws
+about 150 mA. Left on continuously, it alone used 3,600 mAh a day and the node 4,287 mAh,
+more than any panel that fits a 150 mm box could supply. The fix: power the heater only about
+one-sixth of the time, on periodic wake-ups. The rest of the node draws a target of 28.6 mA
+(Table 5), so the average becomes 28.6 + 150/6 ≈ 53.6 mA, with the heater current as specified
+(see the open check in Section 3.3).
+Load
+ESP32 sampling audio
+SX1276 radio
+MAX9814 microphone
+IR flame module
+OLED display
+Regulator, charger,
+dividers
+Base current
+(target)
+Design measure behind the figure
+CPU at 80 MHz, Wi-Fi and Bluetooth off, audio read by
+DMA [41]
+Listens in short windows (channel-activity detection)
+instead of 10.8 mA continuous receive
+Always on
+Powered only when the microphone raises a candidate
+(Rev. B switch)
+Switched off in firmware
+Quiescent currentsAverage (mA)
+20–25
+To be measured on the bench in Phase 226–33; 28.6
+used
+Table 5: Base current budget without the gas heater (design target)
+8
+2–3
+3
+≈0
+≈0
+1–2If the IR module and the receiver stayed on all the time, the base would rise by roughly
+25–30 mA and a 2 W panel would no longer suffice; measuring it is the first Phase 2 bench test.
+Figure 5 shows the same profile simulated in LTspice.
+Figure 5: LTspice simulation of the node’s supply current over one hour
+Scenario
+MQ-5 powered continuously
+(initial)
+MQ-5 duty-cycled at ≈17%
+(nominal)
+Same, with 5 V heater-rail
+losses (conservative)
+Average current
+178.6 mA
+53.6 mA
+≈68 mA
+Daily need
+4,287 mAh
+Panel required
+None of a reasonable
+size
+1,286 mAh
+2 W, net
++114 mAh/day
+≈1,630 mAh 3 W, or 2 W with a
+1-in-10 heater cycle
+Table 6: Energy budget before and after the duty-cycle redesign
+The trade-off is that gas confirmation is not always available within the 5-second window.
+This is why IR is the primary confirmation and gas never blocks an alert.
+3.2 Solar Power System
+North-West Tunisia yields about 1,450 kWh per kWp a year, or 3.97 kWh per kWp a day [42].
+With about 65% end-to-end efficiency for a linear charger, the 2 W panel delivers 2 W × 3.97 h ×
+0.65 ≈ 5.2 Wh a day, or about 1,400 mAh at 3.7 V. This is consistent with the +114 mAh margin
+(about +108 mAh with unrounded figures).
+3.3 Seasons, Autonomy and Open Checks
+• Seasons: Margins are largest from May to October, when fire risk peaks. In January
+northern irradiance falls to about 1.9 kWh/m2 a day [43], below the 686 mAh a day the
+node needs even with the gas sensor off. Winter mode therefore also duty-cycles the audio
+pipeline and lengthens heartbeats, and panels are tilted at about 50◦ for the low winter sun.
+• Shade: Under canopy a panel gets only part of the open-sky sun. Nodes are sited at
+trailheads and clearings with the panel on the pole top, and Phase 2 sizes each site from
+monthly PVGIS data with a shading factor; shaded sites get a 3 W panel.
+• Autonomy: One 3,000 mAh cell lasts about 1.9 days without sun at 80% depth of discharge.
+Two cells give about 3.7 days in the nominal case but 2.9 days at 68 mA, so the conservative
+case needs a third cell (about 10 TND each) to keep the 3-day requirement.
+• Heater rail losses: The MQ-5 heater is specified at 5 V, so its 150 mA is drawn on the
+5 V rail. Referred to the 3.7 V cell through a boost converter, it becomes about 240 mA,
+9raising the node average to about 68 mA and turning the margin negative. The fallback is a
+1-in-10 heater duty cycle (≈52 mA, so the 2 W panel still closes) or a 3 W panel. Phase 2
+bench tests will settle this and measure the base current of Table 5.
+4 Components and Budget
+Each node is built from off-the-shelf modules bought in Tunisia for about 317 TND.
+4.1 Node Components, Functions and Prices
+Component
+TTGO LoRa32 V1.3, 868 MHz (ESP32 +
+SX1276 + OLED + antenna)
+MAX9814 microphone module with automatic
+gain control
+5-channel IR flame sensor module
+MQ-5 gas sensor module
+TP4056 charge module
+2 W, 5 V solar panel (resized after the energy
+budget)
+18650 Li-ion cell, 5 V boost converter, heater
+MOSFET, SMA bulkhead, gasket, ASA/PETG
+filament, wiring
+Role
+Microcontroller and
+radio
+Primary acoustic
+detection
+Primary confirmation
+Corroborating
+confirmation
+Battery charging
+PowerPrice (TND)
+178.000
+Power, enclosure,
+integration≈20 (estimate;
+itemised quote
+pending, possibly
++15–20)
+≈317
+Total per node
+19.000
+10.000
+6.000
+3.900
+80.000
+Table 7: Node bill of materials
+Module prices are retail prices from Little Son (little-son.tn), an electronics distributor in
+Tunis [40]. Buying in Tunisia keeps lead times short and lets local technicians replace any part.
+The development board accounts for more than half of the cost. A production node on a custom
+PCB with a bare ESP32 module and a LoRa module, without the OLED, targets about 200 TND
+at batches of 100 or more; the first custom board is designed in early 2027 and enters production
+in 2029.
+4.2 Part Choices
+Audio is sampled at 16 kHz, which captures sound up to 8 kHz and so covers the 1–3 kHz
+band where fire crackle concentrates; surface-fire sound extends to about 15 kHz [30, 31]. The
+MAX9814’s automatic gain control keeps faint and loud events in range. The IR sensor responds
+in milliseconds and, unlike gas, does not depend on wind. The MQ-5 is cheap but has low smoke
+sensitivity and needs a warm-up [37]. Phase 2 therefore compares it with MQ-2, MQ-7 and
+low-power digital gas sensors that draw a few milliamps instead of 150 mA, and an I2S MEMS
+microphone that could replace the MAX9814 with lower power and cleaner audio.
+5 Mechanical and Electrical Design
+5.1 Electrical Design: Simulation Checks in LTspice
+The ESP32 tolerates at most 3.3 V on any pin, while the gas and flame modules run at 5 V. Each
+interface was simulated before any hardware was connected. These are sanity checks of the hand
+calculations and worst cases, not proof: the proof is the Phase 2 bench measurement.
+10Interface
+MAX9814
+microphone
+MQ-5 gas sensor
+IR flame sensor
+Supply during
+LoRa transmission
+Simulated result
+Signal centred at 1.23 V, about 2 Vpp swing
+At most 2.27 V even with the module
+output at its 5 V rail, through the 12 kΩ /
+10 kΩ divider
+D0 high: 3.0 V with a stiff module output,
+2.25 V if the module has a 10 kΩ pull-up
+(the ESP32 needs 2.48 V)
+Dip of 4.5 mV at full charge and 12 mV
+with a nearly empty cell; at least 0.70 V
+above the ESP32 brown-out threshold
+Status
+Safe natively; no divider
+needed
+Checked, worst case
+included
+Pin-safe, but 2.25 V may
+not read as high: Rev. B
+uses a diode level shift
+(Table 9)
+Checked; no reset
+expected
+Table 8: Electrical interface checks in simulation
+The ESP32’s ADC is accurate only up to about 2.45 V, so every analog input in the schematic
+stays below that, even if a 5 V module output sits at its rail.
+Figures 6 and 7 show the simulated waveforms behind Table 8.
+(a) MAX9814 output, centred at 1.23 V
+(b) MQ-5 output after the divider, below 2.45 V
+Figure 6: LTspice simulations: microphone and gas-sensor interfaces
+(a) IR flame D0 after the divider: 3.0 V, or 2.25 V
+with a 10 kΩ module pull-up
+(b) 3.3 V rail during a LoRa burst, full and nearly
+empty cell
+Figure 7: LTspice simulations: flame-sensor output and supply during transmission
+5.2 Electrical Design: Schematic Capture in KiCad
+The whole system is drawn in KiCad as one hierarchical project: the sensor node in detail
+(Figures 8–10), and the gateway, siren unit and household receiver at concept level. KiCad’s
+electrical rules check reports no errors or warnings, and the netlist was checked pin by pin against
+the intended design. Table 9 lists the choices that refine the LTspice set.
+11Figure 8: Sensor-node schematic in KiCad (1/3): solar charging, battery and power rails
+Block
+MQ-5 output
+IR flame, analog
+IR flame, digital
+MQ-5 heater
+Charging safety
+Solar input
+Board pins
+Schematic choice
+12 kΩ / 10 kΩ divider to GPIO39: at most 2.27 V
+at 5 V
+Centre channel A3 and A2, each 12 kΩ / 10 kΩ, to
+GPIO34 and GPIO32
+Rev. B: D0 through a BAT54 Schottky diode to
+GPIO13, with a 10 kΩ pull-up to 3.3 V (the figure
+still shows the 12 kΩ / 18 kΩ divider)
+P-MOSFET high-side switch (AO3401A) driven by
+an N-MOSFET (AO3400A) from GPIO25; off at
+reset
+TP4056 temperature input with a 10 k NTC on the
+cell (5.6 kΩ / 75 kΩ): charges only between about 0
+and 45 ◦ C
+SS34 Schottky and SMBJ6.5A surge suppressor,
+sized for a 5 V panel (about 6 V open-circuit); a
+6 V panel (7–8 V) would need a wide-input charger
+such as the CN3791
+GPIO33 (LoRa DIO1) and GPIO35 (on-board
+battery divider) left free
+Table 9: Sensor-node schematic: design choices
+12
+Reason
+ADC linear range, worst
+case
+Flicker analysis on ADC1
+Clean 3.3 V high
+whatever the module’s
+own pull-up; the divider
+gave only 2.25 V with one
+Duty-cycles the 150 mA
+heater
+Li-ion limits, summer heat
+and winter frost
+Reverse current, surges;
+TP4056 input limit of 8 V
+No conflict with the
+TTGO board(a) Controller and LoRa radio
+(b) Acoustic front end
+Figure 9: Sensor-node schematic in KiCad (2/3): controller, radio and microphone
+(a) IR flame confirmation
+(b) MQ-5 gas sensor with switched heater
+Figure 10: Sensor-node schematic in KiCad (3/3): IR flame sensor and gas sensor
+5.3 Mechanical Design
+The enclosure is a printed box of about 150 × 110 × 70 mm, with an IP65-class sealed electronics
+bay and three different sensor openings, because each sensor needs outside air or light in a different
+way.
+Enclosure. It is printed in ASA or PETG, never PLA, which softens at about 55–60 ◦ C inside
+a sun-heated box; ASA also resists UV. Inside there are about 90 × 70 × 35 mm of usable space,
+and the 18650 cell is the tallest part. A gasket in a lid groove seals the electronics bay, with a
+drain at the lowest point as mounted. Open ports cannot be dust-tight, so Phase 2 covers the
+acoustic port, gas vent and drain with ePTFE (expanded PTFE) vent membranes, the breathable
+film of waterproof jackets: its pores are about 20,000 times smaller than a water drop but 700
+times larger than a water-vapour molecule [39]. Rain and dust stay out while gas and sound
+pass, so the MQ-5 still smells the smoke and the microphone still hears the crackle; Phase 2
+measures the loss in the 1–3 kHz band. The IR opening gets a polycarbonate window, which
+passes near-infrared. The design starts from RAK Wireless’s parametric enclosure, modified with
+our ports (Figure 11). It is strapped to a pole or tree at about 2.5 m, out of casual reach, in a
+neutral colour that discourages vandalism.
+13Figure 11: The Qabs sensor node (SolidWorks model): each sensor has its own opening, and the 2 W panel
+and LoRa antenna free it from the grid and from cables
+Port
+Acoustic labyrinthSensor
+Microphone
+Louvred ventMQ-5 gas
+Straight windowIR flame
+Design and reason
+Zig-zag baffle with foam behind it: sound diffracts
+around corners, raindrops cannot; the foam damps wind
+noise
+Angled slats, separate from the labyrinth, which would
+block gas diffusion
+Clear line of sight to the watched spot; a baffle would
+blind it
+Table 10: Three purpose-built sensor ports
+Layout and heat. The microphone sits behind the labyrinth on the left wall and the IR
+sensor at its window opposite the antenna. The MQ-5 sits behind its vent, the TTGO board in
+the centre with its antenna on a sealed SMA bulkhead, and the battery and charger at the shaded
+base. Li-ion cells should not charge above about 45 ◦ C or below 0 ◦ C (Ain Draham sees snow),
+and common TP4056 modules ship with temperature sensing disabled. The schematic therefore
+adds a thermistor on the cell (Table 9), and Phase 2 adds a light-coloured shell and a sun hood.
+Figure 12 shows the arrangement.
+Can the node itself start a fire? A heater inside a forest sensor deserves this question.
+The answer is no, by design:
+• The heater is tiny and enclosed. It uses under 0.8 W, less than a small LED bulb, and
+sits inside a ceramic tube under a stainless-steel 100-mesh “anti-explosion” gauze [37]. The
+MQ-5 is built to sit in leaking cooking gas and detect it without igniting it.
+• Its outside stays far from ignition temperatures. Dried leaves need a surface of at
+least 300 ◦ C for ten minutes, or 500 ◦ C for a few seconds [38]; the sensor sits on a plastic
+base on an ordinary circuit board, which could not survive anything close to that.
+• It is sealed away and rarely on. It has its own compartment in the closed box and never
+touches vegetation; it is powered about one-sixth of the time, and its switch is off at reset,
+so it stays off whenever the board restarts.
+• The battery is guarded too. The Li-ion cell holds most of the stored energy: the charger’s
+protection cuts it off on a short circuit or deep discharge, it charges only between 0 and
+45 ◦ C, and it sits at the shaded base.
+Phase 2 measures the sensor and enclosure surface temperatures in full summer sun, to put a
+14number on this margin.
+Figure 12: Internal layout
+6 Communication, Edge AI and Software
+6.1 Communications Design
+Nodes talk over licence-free LoRa at 868 MHz, capped at 25 mW and under 1% airtime, the
+European short-range-device limits that Tunisia applies (Section 6.2). Gateways sit high on
+telecom towers to overcome forest attenuation.
+• Mesh to gateways: Nodes relay each other’s events (store-and-forward, limited hops,
+duplicate suppression) to 2–3 solar gateways on towers or ridges. Gateways forward events
+over 4G with 2G fallback; 99.9% of the population is covered by 2G/3G/4G [28], but
+mountain hamlets may not be, so the walk test checks each gateway’s link on site.
+• Packets: An event packet of about 40 bytes, including authentication, carries node ID,
+time, classifier score, IR flicker score, gas reading and battery voltage. Periodic heartbeats
+reveal a silent node within hours.
+• Local sirens: Sirens are triggered over LoRa by a gateway or a nearby node, so the first
+warning needs no internet.
+• Security: Payloads use authenticated encryption (AES-CCM) with message counters, so
+fake or replayed alarms are rejected. ESP32 flash encryption and secure boot protect keys if
+a node is stolen.
+• Power of the other devices: gateway about 60–100 mA (2 Ah a day) and siren unit
+about 30–40 mA while listening, each on a 10 W panel with three days of battery; household
+receivers listen in short windows (about 2 mA) on a USB charger with an 18650 backup
+that lasts weeks in a blackout.
+6.2 Compliance with Tunisian ANF Rules
+Tunisia applies the European short-range-device limits (CEPT ERC/REC 70-03, tested to ETSI
+EN 300 220 [44, 45]; exact ANF reference to confirm). In 868.0–868.6 MHz, devices are licence-free
+at up to 25 mW ERP (14 dBm) and under 1% airtime.
+• Power: Output is capped at +14 dBm in firmware, never the radio’s +20 dBm. Many
+LoRa32 boards wire only the SX1276’s PA BOOST output to the antenna, so its register
+15is limited to +14 dBm. With the stock antenna of about 2 dBi this gives about 13.9 dBm
+ERP; if measured margin is thin, +13 dBm.
+• Airtime: 1% means 36 s per hour. A 40-byte packet takes about 0.29 s at spreading factor
+9 (about 125 packets an hour) and 2.0 s at spreading factor 12 (about 18); SF12 is kept
+for the few longest links. Relaying counts against each node’s own 1%: forwarding hourly
+20-byte heartbeats (about 0.19 s each) for ten neighbours plus its own takes about 2 s an
+hour, and relaying one fire event three times with retries about 2 s more. A pure-ALOHA
+estimate gives about 0.2% collisions for heartbeats. A fire is the hard case: nine 0.29 s
+packets from three nodes and their relays within 10 s would collide about 40% of the time if
+sent freely, so each node sends in a slot set by its ID and only one relay forwards each event.
+Phase 2 tests this.
+6.3 Range under Canopy
+Measured 868 MHz links reach about 860 m in dense forest and 2,050 m in less dense forest [34].
+Raising the receiver to 25 m extended range to about 1.75 km [35]. Forest adds about 25 dB of
+loss compared with open ground [36].
+Link budget
+Transmit power + antenna gains
+(node and gateway)
+Receiver sensitivity (SX1276,
+125 kHz)
+Maximum allowable path loss
+SF9
++14 dBm + 4 dBiSF12
++14 dBm + 4 dBi
+−129 dBm−137 dBm
+147 dB155 dB
+Table 11: LoRa link budget
+Free-space arithmetic overstates range under canopy, where measured links are far shorter.
+Planning therefore uses measured distances: nodes stay within about 600 m of a neighbour at
+about 2.5 m height, and gateways go high. A vegetation path-loss model (ITU-R P.833) will be
+fitted to the Phase 2 walk-test data before installation.
+6.4 Edge AI Classifier and Data Strategy
+A small neural network on the ESP32 decides, second by second, whether the microphone hears
+fire. It is trained first on public datasets, then on recordings from Tunisian forests. Raw audio
+never leaves the node.
+On the node: Audio at 16 kHz is cut into 1-second windows with 50% overlap. Burning
+vegetation produces bursts of short acoustic impulses [32], so a cheap impulse counter passes only
+crackle-like windows to the network. A compact 8-bit convolutional network then scores each
+window’s log-mel spectrogram, using TensorFlow Lite Micro or ESP-DL; the targets are under
+100 kB and 100 ms. A candidate needs several consecutive windows to agree, for example 3 of 5.
+Training data: ESC-50 and FSD50K provide fire and crackle clips. FSC22 adds 2,025
+forest clips in 27 classes, including fire, rain, wind, insects, chainsaws and vehicles [33]. Local
+hard negatives cover summer cicadas, wind in cork oaks, livestock bells, motorbikes and cooking.
+Phase 2 starts with small supervised bench burns; controlled burns of local fuels (cork oak litter,
+heather, lentisk, pine), recorded at 5–50 m with forest and Civil Protection staff, follow in spring
+2027 and give the detection-distance curve that sets node spacing. The 50 m target comes from
+siting, not acoustics: it assumes fires at a trailhead start within about 50 m of where people stop,
+and the burns will show whether the microphone reaches that far.
+Validation and governance:
+• Splits: Field data is split by site, so the model is always tested on a place it has never
+heard.
+16• Reporting: Confusion matrix, false candidates per node per day, and detection probability
+against distance.
+• Target: At least 95% recall at the candidate stage; confirmation removes false positives.
+• Updates: Models ship only in validated firmware updates.
+• Privacy: Deployed nodes never store or transmit audio. Training recordings are made only
+in organised sessions with consent, and human speech is discarded.
+6.5 Tools and Software Stack
+The full decision chain already runs as software: Node-RED flows over MQTT, driven by a Python
+simulator. Phase 2 swaps simulated nodes for real ones without touching the logic. Table 12 lists
+the tools behind every result in this report and where that result appears.
+ToolUsed forWhat we did with it
+LTspiceCircuit
+simulation
+Schematic
+capture
+Mechanical CADChecked every sensor interface and the
+supply during a LoRa burst
+Whole system as one hierarchical project;
+no rule errors; netlist checked pin by pin
+Modelled the enclosure, the three sensor
+ports and the panel and antenna mounts
+Internal layout render; component and
+system animations for the video
+Sampling, confirmation logic, LoRa;
+gateway forwarding over 4G and local siren
+trigger
+8-bit classifier for fire crackle, under
+100 kB, running on the ESP32
+Graded confidence, escalation and
+acknowledgements; Civil Protection
+dashboard
+Simulator (simulator.py) with synthetic
+events, sensor noise, missed calls and
+offline nodes
+Versioned interfaces (packet format,
+MQTT topics, event schema); public
+repository in Phase 2
+KiCad 7
+SolidWorks
+Blender
+Arduino /
+ESP-IDF (C++)
+3D rendering and
+animation
+Node and
+gateway firmware
+TensorFlow Lite
+Micro
+Node-RED +
+MQTTOn-device AI
+PythonTest driver
+Git and GitHubVersion control
+Backend and
+dashboard
+Result in this
+report
+Table 8
+Figures 8–10,
+Table 9
+Figure 11
+Figure 12, video
+Section 6.4
+Section 6.4
+Figure 3,
+Figure 4
+Table 13
+Section 7.3
+Table 12: Tools used and the results they produced
+6.6 Methodology, Feasibility and Requirements
+We follow the systems-engineering V-model: each design level is paired with the test that proves it
+(Table 13). We also keep a formal risk register (Section 9), simulate before building at every level,
+and build the business case on the Business Model Canvas blocks (customers, channels, revenue
+and costs in Section 8), with Lean Startup interviews planned for Phase 2. The Phase 2 GitHub
+repository mirrors the architecture: firmware/, gateway/, backend/, simulation/, hardware/,
+ml/ and docs/.
+Technical feasibility. Every part is sold in Tunisia today, and every subsystem has been
+checked on paper: interfaces in LTspice (Table 8), the schematic in KiCad with no rule errors, the
+energy budget against measured irradiance (Section 3), radio range against measured forest links
+(Table 11) and the full decision chain in simulation. What remains is measurement, not invention:
+bench energy, IR range and a forest walk test in Phase 2.
+17Design level
+Stakeholder needsArtifact
+Community needs (Section 1.3)System
+requirements
+ArchitectureConfidence levels, escalation
+timings, ANF limits
+Node, mesh, gateway, backendVerified by
+Interviews with residents
+and responders
+End-to-end Node-RED
+simulation
+Simulated fault injection
+Component
+design
+ImplementationInterfaces, energy budget,
+enclosure
+Firmware, classifier, printed
+enclosureLTspice, energy
+calculation, print checks
+Bench tests, controlled
+burns
+Status
+Started (one
+resident); Phase 2
+Done in
+simulation
+Done in
+simulation
+Done / in
+progress
+Phase 2
+Table 13: V-model: design levels and their verification
+Requirement
+Ignition to Civil Protection alert
+Detection of a small flaming fire
+Unconfirmed events sent to residents
+False sirens per site
+Autonomy without sun
+Radiated power and airtime
+Node parts cost
+Enclosure
+Target
+≤5 min (design ≈15 s)
+≥90% within 50 m of a node (target; Phase 2 burns)
+None (design rule)
+≤1 per season
+≥3 days (two cells nominal, three conservative)
+≤25 mW ERP, <1%
+≈317 TND today, ≈200 TND on a custom board
+IP65-class electronics bay, ASA or PETG
+Table 14: Key system requirements
+7 Implementation Plan
+Qabs goes from paper to the forest in four stages (Table 15): prove the prototype by the TSYP
+demonstration on 10 December 2026, prepare one real site near Ain Draham over the winter, run
+30 nodes there through the whole 2027 fire season, and extend to the Kroumirie-Mogods corridor
+from 2028 only if the pilot passes four measurable tests (Section 7.2).
+StageWhenWhat we doProof that it worked
+1 PrototypeOct–Dec
+2026• Build 3 nodes, a gateway and a siren
+• Bench tests: energy, IR range, flicker
+• Small burn and forest walk testLive demo on 10 Dec
+2026: crackle and flame
+trigger siren, call and
+dashboard within a
+minute
+Jan–Mar
+2027• Map ignition points and road access
+• Radio walk test to fix positions
+• Community meeting: consent, guards
+• Permits; custom circuit board designMunicipal letter of
+intent; residents’ call
+list; final node positions
+Apr–Oct
+2027• Install gateways, 30 nodes, 3 sirens
+• Commission: small flame and a drill
+• Run the fire season, report monthlyEvery alert logged with
+its timing and
+confidence, reported to
+the DGF and Civil
+Protection
+Nov–Dec
+2027• Measure the pilot against 4 gates
+• If all are met, equip the corridor in 2028The four gates
+(Section 7.2)
+TSYP Phase 2
+2 Preparation
+one real site
+3 Pilot
+near Ain Draham
+4 Decision
+then scale-up
+Table 15: Four stages from prototype to corridor
+187.1 Timeline for Implementation
+Figure 13 places the four stages on a calendar. The red band is the fire season: the pilot is
+installed just before it starts, so it is tested in the months when fires actually happen.
+2026
+2027
+Oct Nov Dec Jan Feb Mar Apr May Jun
+2028
+Jul Aug Sep Oct Nov Dec Jan
+Fire season (highest risk)
+1. Prototype: build and test
+TSYP demonstration (10 Dec)
+2. Preparation of the site
+3. Pilot: install, then operate
+4. Decision: measure the gates
+Go or no-go for the corridor
+Corridor roll-out, if all gates are met
+Figure 13: Timeline for implementation, October 2026 to January 2028 (planned). Grey bars: the four
+stages of Table 15; red bar: fire season; diamonds: deadline and decision
+7.2 Detailed Actions and Resources
+Pilot site. Trailheads, picnic areas and forest-road pull-offs near Ain Draham. The site needs
+hamlets within about 2 km, a tower or ridge in radio range, a willing municipality and volunteer
+guards.
+Resources. People: the four roles in Section 7.3, plus one community guard per hamlet.
+Money: about 1,950 TND for the prototype and 18,060 TND for the pilot (Section 8.4). Infras-
+tructure: gateways on the telecom partner’s towers (Section 7.4), with solar gateways on ridges as
+a fallback.
+The four gates to scale up in 2028. The corridor is equipped only if the pilot shows all four:
+1. Blind detection tests: small supervised fires lit by Civil Protection 10–50 m from a node,
+at places and times the team does not know; at least 90% detected and reported to Civil
+Protection within 5 minutes.
+2. False alarms measured over the season: at most one false siren per site.
+3. Node uptime of at least 95% over the season.
+4. A signed contract or budget line with the DGF or a municipality.
+7.3 Team Organization and Roles
+Four roles cover the system end to end, each owning one subsystem. As the challenge requires, the
+team includes at least one member each of IEEE SIGHT, the IEEE Systems Council and IEEE
+CEDA; members are not named, to keep the submission anonymous.
+Role
+Systems & RF lead
+Edge AI & firmware lead
+Backend & response lead
+Business & community lead
+(interim: backend & response
+lead)
+Owns
+LoRa radio and mesh, integration, enclosure, bill of
+materials, ANF compliance
+Classifier, sensor firmware, confirmation logic
+MQTT and Node-RED backend, dashboard, escalation
+engine, voice calls
+Market and finance, DGF and municipal partnerships,
+community training, report and video
+Table 16: Team roles
+19Interfaces (packet format, MQTT topics, event schema) are versioned in the repository, so the
+leads can work in parallel. A weekly integration session runs the simulator against the latest code.
+Logged design reviews are how the AND-gate and gas-sensor energy flaws were caught.
+7.4 Strategic Partnerships
+One partnership is under way: a Tunisian telecommunications infrastructure company is discussing
+hosting 2–3 Qabs gateways on its towers. Each other partner is mapped to a role in the system.
+Partner
+Telecom infrastructure
+companyRole in Qabs
+Hosts 2–3 gateways on
+towers
+DGF and forest
+districts
+Civil Protection,
+regional
+Corridor municipalitiesCustomer; fire and
+damage data; permits
+Dashboard users; alert
+protocol
+Loudspeakers, guards, call
+lists
+Loudspeakers; responders
+and drills
+Forest expertise;
+controlled burns
+Lived experience of the
+July 2026 fire; first
+interviews
+Mosque committees,
+Red Crescent
+Silvo-Pastoral Institute
+of Tabarka
+Residents of Cap Negro
+(Nefza)
+Status
+In discussion. Technical questions answered
+(frequencies, weight, mounting, power, IP
+rating, radio compatibility); datasheet and
+LTspice results sent. Awaiting site standards
+for lightning protection and mounting height.
+To approach with this report
+To approach
+To approach for a letter of intent
+Through municipalities
+Proposed
+First conversation held; structured interviews in
+Phase 2
+Table 17: Partners and stakeholders
+Our next milestone is a signed letter of intent from one corridor municipality and written
+confirmation from the telecom partner before Phase 2.
+8 Market Analysis and Business Model
+8.1 Market and Customers
+Demand is real and funded now: in June and July 2026 the DGF announced start-up partnerships
+and a push toward AI for early warning [15, 16]. Existing offers detect fires; none we found closes
+the last mile.
+Customers and channels: The DGF and its regional districts (Jendouba, Béja, Bizerte)
+are the primary buyer. Corridor municipalities, which run loudspeakers and can host guards,
+are secondary. Civil Protection, forest guards and residents use Qabs without paying. Funding
+channels include the EU, which backed Tunisia’s July 2026 firefighting through its Civil Protection
+Mechanism [14], the Interreg FORFIRE-AI programme [50] and WWF North Africa’s digital
+fire-monitoring tender for the DGF [20].
+Market size: planning estimates, assuming 5% of forest is high-risk human interface with
+one node per 10 ha of it; the DGF can replace them with its own data.
+The system price per node is the node at 450 TND plus its share of gateways and sirens
+at pilot density (Section 8.3). One node per 10 ha matches Dryad’s “sparse” density; Dryad
+recommends seven times that near trails [47]. Qabs aims to stay sparse by watching ignition
+points, an assumption until Phase 2 burns give the detection-distance curve. If Qabs needed
+Dryad’s trail density, the corridor would need about 5,250 nodes: the market grows, but so does
+the cost of protecting each hectare, sevenfold. The projection in Section 8.6 equips the whole
+20corridor by 2029, so later growth depends on national and Maghreb sales; Algeria and Morocco
+suffered the same fires [23].
+LevelBasisNodes
+National
+Corridor1.25 M ha of forest [18]
+≈150,000 ha (Jendouba alone has
+118,470 ha [26])
+One trail cluster near Ain Draham6,250
+750
+Pilot
+30
+System sales
+(590
+TND/node)
+≈3.7 M TND
+≈442,500 TNDMaintenance
+per year
+18,060 TND (full
+pilot budget)≈3,000 TND
+≈437,500 TND
+≈52,500 TND
+Table 18: Market size (planning estimates)
+8.2 Competitive Landscape
+Player
+Dryad Silvanet
+(Germany) [46]Approach
+Solar gas-sensor LoRa mesh,
+80–100 m detection
+Firewave
+(Israel) [48]
+FORFIRE-AI
+(Tunisia–Italy) [49]AI acoustic sensors, fires down
+to 1 m2
+Thermal cameras seeing
+5–10 km, drones, satellites
+Smart for Green
+(Tunisia) [51]
+Rainforest
+ConnectionAI on camera video; works with
+the DGF
+Acoustic forest monitoring
+against illegal logging and
+poaching
+375 m hotspots
+Satellites (NASA
+FIRMS /
+VIIRS) [52]
+Price or stage
+Sensor EUR 48
+(≈162 TND);
+gateways
+EUR 371–549
+(2022)
+Pre-seed, about 140
+sensors in pilots
+Public research,
+2025–2028
+Start-up
+Non-profit platform
+Free
+Gap Qabs fills
+No resident alerting;
+imported; cloud
+subscription
+No last mile; not built
+for local upkeep
+Sees fires once visible
+at distance; serves
+managers, not residents
+No acoustic sensing or
+community escalation
+Not designed for fire or
+local maintenance
+Established fires, often
+hours later
+Table 19: Competitive landscape
+Positioning. Today’s 317 TND node costs about twice a Dryad sensor because it runs on a
+development board and a retail panel. The 200 TND custom board narrows that gap, and Qabs
+adds locally built gateways, sirens and voice alerts that Dryad lacks. Qabs is the last-mile layer:
+cameras and satellites see fires from afar, while Qabs hears them at the trail and tells the nearest
+people; its open MQTT interface can feed national early-warning platforms [29].
+8.3 Revenue Model and Unit Economics
+A 30-node pilot costs about 18,060 TND (≈ EUR 5,400) and pays for itself if it keeps about 7 ha
+from burning over five years (Section 8.5). On the development board the equipment margin is
+thin (11%); the business turns profitable once nodes move to a custom board. Prices use Central
+Bank rates of late September 2026: 1 EUR ≈ 3.37 TND, 1 USD ≈ 2.96 TND [55]; estimates will
+be refined with supplier quotes.
+Revenue model (proposal).
+• Option A: equipment plus maintenance: Node 450 TND installed, gateway 1,200 TND,
+siren unit 600 TND. At pilot density (2 gateways and 3 sirens per 30 nodes) that is about
+590 TND of system sales per node. Maintenance and platform cost 70 TND per node per
+year.
+21• Option B: hardware as a service: 15 TND per node per month on five-year contracts,
+covering infrastructure, platform and maintenance. This suits municipal operating budgets.
+• Residents never pay: Institutions pay, and voice-call charges pass through at cost.
+The 70 TND maintenance price covers field visits costed at about 40 TND per node per year
+at scale. The pilot’s higher running cost (3,000 TND a year, about 100 per node) spreads the
+server and call credit over only 30 nodes.
+Per installed node
+Today:
+development
+board
+317 + 30
+78
+100
+525
+65 (11%)
+175 (19%)
+Node parts + assembly
+Share of gateways and sirens (pilot density)
+Installation and mounting
+Total cost
+Option A margin on 590
+Option B margin on 900 over 5 years, less
+40/year upkeep
+Target: custom
+board
+200 + 30
+78
+100
+408
+182 (31%)
+292 (32%)
+Table 20: Unit economics per installed node (TND)
+8.4 Budget Estimates
+The Phase 2 prototype needs about 1,950 TND: three nodes (≈950), one gateway (≈650) and one
+siren unit (≈350), funded by sponsors and team resources. The 2027 field pilot near Ain Draham
+costs:
+Item
+Sensor nodes
+Gateways: ESP32 + LoRa + 4G, 10 W solar, battery
+(estimate)
+Siren units: LoRa receiver, 110 dB siren, solar
+(estimate)
+Household LoRa receivers (estimate)
+Mounting, lightning protection, spares (≈15%)
+Server and voice-call credit, 12 months
+Installation, walk tests, community training
+Total
+Qty
+30
+2Unit (TND)
+317
+650Total (TND)
+9,510
+1,300
+33501,050
+5
+–
+–
+–120
+–
+–
+–600
+1,900
+1,200
+2,500
+18,060
+Table 21: Field pilot budget (2027)
+Running the pilot afterwards (visits, batteries, server, calls) costs an estimated 3,000 TND a
+year.
+8.5 Return on Investment: an Avoided-Loss Framework
+We use a conservative published value and show how the result moves with it. Tunisian forests
+are worth about US$120 per hectare per year, or about 355 TND [53]; northern forests are
+worth more [54]. Cork oak usually resprouts after fire, but a burned stand loses years of cork,
+harvested only about once a decade, and other forest income. Firefighting, homes, livestock,
+carbon and health are excluded. The base case counts 20 years of lost value discounted at 5%,
+or 4,420 TND/ha. The pilot’s five-year cost is C5y = 18 060 + 4 × 3 000 = 30 060 TND, so the
+22break-even area is:
+Abe =
+C5y
+30 060 TND
+=
+≈ 7 ha over five years
+Lha
+4 420 TND/ha
+(1)
+The result depends on how many years of lost value are counted: 10 years undiscounted
+(3,550 TND/ha) gives 8.5 ha, 20 years undiscounted (7,100 TND/ha) 4.2 ha, and 40 years
+(14,200 TND/ha) 2.1 ha. These areas count only fires Qabs actually stops early: if it changes the
+outcome of one detected fire in five, the pilot breaks even when the fires it detects would otherwise
+burn about 35 ha in five years.
+For scale, a single 2026 fire at Jebel Echahma damaged more than 400 ha [17]. The DGF’s
+own damage cost per hectare, which we are requesting, will replace these values.
+8.6 Three-Year Projection
+Assumptions: Option A pricing; the 2027 pilot funded at cost by a grant or the DGF; custom
+board from 2029; fixed costs of 60,000 TND a year from 2028 (two junior engineers and overheads).
+TND
+New nodes installed
+Revenue: system sales +
+maintenance (70 × installed base)
+Cost of goods, installation and
+maintenance
+Gross profit
+Operating result after fixed
+costs
+2027 (pilot)
+30
+18,060 (at cost)2028 (corridor)
+220
+131,9002029 (scale-up)
+500
+312,500
+18,060116,700214,000
+0
+015,200
+−44,80098,500
+38,500
+Table 22: Three-year projection (TND)
+Operating break-even comes in 2029 with the custom board and recurring maintenance. Not
+yet included: board engineering and ANF/ETSI certification, working capital for slow public
+payment, and salaries before 2028; unless grants cover them, break-even moves later. The 500
+nodes of 2029, which assume the DGF and two municipalities buy after the pilot, are the least
+certain line, and later growth needs national sales.
+9 Risk Management, Impact and Ethics
+9.1 Risk Management and Mitigation Register
+Three critical design flaws are resolved on paper: gas-sensor energy use, radio non-compliance and
+the rigid AND gate. The largest open risks are detection range, the real base current, radio range
+under canopy and pilot funding.
+Risk
+Energy budget does not
+close (heater left on,
+base current above
+28.6 mA)
+The node itself starts a
+fire (heater, battery)
+Likelihood ×
+impact
+High × critical
+Low × critical
+MitigationOwnerStatus
+Heater duty-cycled; IR module
+and receiver duty-cycled;
+1-in-10 cycle or 3 W panelSystemsMitigated on
+paper; bench
+test
+Heater under 0.8 W behind
+flame-arrestor gauze, sealed, off
+at reset; protected cell, charged
+at 0–45 ◦ CSystemsMitigated;
+measure in
+Phase 2
+23Likelihood ×
+impact
+Low × criticalMitigationOwnerStatus
++14 dBm cap (+13 if needed);
+airtime under 1%SystemsSilent false negative
+from a rigid AND gate
+Detection range shorter
+than assumedHigh × criticalBackendPilot funding
+(18,060 TND) not
+secured
+Liability if an alert failsMedium ×
+criticalTeam capacity (business
+lead vacant)
+Lightning on towers or
+nodes
+LoRa range under dense
+canopy
+False alarms erode trustMedium ×
+high
+Medium ×
+critical
+Medium ×
+high
+Medium ×
+highIR fooled by sunlight or
+too short-rangedMedium ×
+highBattery overheats, or
+charges below 0 ◦ C
+No buyer budget or
+slow procurementMedium ×
+high
+Medium ×
+highMQ-5 unreliable
+outdoors
+Too little real fire audioHigh ×
+medium
+High ×
+medium
+Low × highGraded confidence; gas never
+blocks
+Persistence rule; IR range
+measured; denser siting near
+trails
+Grant applications (Interreg,
+WWF tender), DGF
+co-funding, sponsors
+Qabs adds to official warnings,
+never replaces them; contracts
+and signs say so; every alert
+logged
+Interim owner named; recruit
+before Phase 2
+Operator site standards; surge
+protection, grounding
+High gateways; nodes within
+≈600 m; walk tests
+Unconfirmed events never
+reach residents; site profiles;
+published rate
+Shroud aimed at the spot;
+flicker analysis; pyroelectric
+option
+Thermistor cut-off; shaded
+base; light shell
+Grant-funded pilot;
+hardware-as-a-service option;
+early DGF engagement
+Corroborating role only;
+alternative sensors tested
+Public datasets, bench burns,
+2027 controlled burns
+Solar gateways on ridges as
+fallback
+Second source; custom board
+designed in 2027
+Discreet boxes; guards as
+owners; cable guards; cleaning
+at each visit
+Two providers; GSM modem
+fallback at the gateway
+Early engagement; start on
+municipal landMitigated;
+verify by
+measurement
+Resolved
+Risk
+Radio exceeds ANF
+limits
+Tower partner
+withdraws
+TTGO board supply or
+price change
+Vandalism, theft,
+animals, dust on panels
+Voice-call provider
+outage or price change
+Permits delayed
+Medium ×
+critical
+Low × critical
+Medium ×
+medium
+Medium ×
+medium
+Medium ×
+medium
+Medium ×
+medium
+AI/firmwareOpen: Phase 2
+burns
+BusinessOpen
+BusinessOpen
+TeamOpen
+SystemsOpen
+SystemsOpen: Phase 2
+test
+Mitigated
+Backend
+AI/firmwareOpen: bench
+test
+SystemsOpen
+BusinessOpen
+AI/firmwareMitigated
+AI/firmwareOpen
+SystemsMonitored
+SystemsMonitored
+BusinessMonitored
+BackendOpen
+BusinessOpen
+Table 23: Risk register
+9.2 Humanitarian Impact and SDG Alignment
+Who benefits: forest households (62% of Tunisia’s forest communities live in the corridor),
+women and elderly residents whom text alerts miss, trail visitors, responders who get an exact
+location, and a local economy that lives from the forest.
+24SDG
+13 Climate Action
+Target
+13.1 Resilience to climate
+hazards
+15.1, 15.2 Conserve forests
+15 Life on Land
+11 Sustainable Communities
+3 Good Health
+9 Industry and Infrastructure
+11.5 Fewer people hit by
+disasters
+3.d Early warning for health
+risks
+9.1 Resilient local infrastructure
+Qabs contribution
+Early warning for heat-driven fires
+Protects cork oak and zeen oak
+stands
+Warns homes and herders in time
+Earlier evacuation, less smoke
+Built and repaired in Tunisia
+Table 24: SDG alignment
+Impact targets. Beyond Table 14, the pilot must give every household at least one alert
+path, get 90% of alerts acknowledged within 10 minutes and train one guard per hamlet, serving
+the UN Early Warnings for All goal.
+Empowering local actors: guards verify alerts and own the nodes near their hamlet,
+municipal staff run the loudspeakers, and local technicians maintain nodes with Tunisian parts.
+9.3 Ethics, Equity, Transparency and Community Ownership
+Microphones in a forest and sirens in villages must earn trust; Qabs writes that trust into design
+rules.
+Principle
+Equity
+Privacy
+Transparency
+Human in the loop
+Wellbeing
+Community
+ownership
+Design rule
+Alerts are free to residents and paid for by institutions; the least literate
+households get the same warning through sirens, voice and loudspeakers.
+Audio is classified on the node and never stored or sent. Phone numbers are
+opt-in, kept in Tunisia, used only for fire alerts and declared to the INPDP
+(Organic Law 2004-63); signs explain each box.
+Every alert carries its confidence level; false-alarm rates and detection times are
+published each season; the alert logic is open to review.
+Qabs informs and people decide: evacuation orders stay with Civil Protection,
+and a guard verifies alerts at T+5.
+Alarm fatigue is a safety risk: unconfirmed events never reach residents, siren
+tests are announced, drills precede each season.
+Residents choose locations through their municipality; guards and local
+technicians run the system; the DGF and municipalities own it.
+Table 25: Ethical principles and design rules
+One tension deserves naming: sensors where people gather may reveal someone’s carelessness.
+Qabs protects, it does not police: alerts never identify who lit a fire.
+9.4 Sustainability and Lifecycle Resilience
+Lifecycle: Parts are sourced and enclosures printed in Tunisia. Nodes sense fully from May to
+October and run a low-power mode in winter. Each April one visit cleans the IR window and
+foam, checks the gasket, tests the siren and updates firmware over Wi-Fi; batteries last 2–3 years,
+then cells are recycled and enclosures reprinted. Maintenance fees fund replacements; the DGF
+and municipalities own the system.
+2510 General Conclusion
+Tunisia does not lack fire data; it lacks a way to turn the first minutes of a fire into action by the
+people closest to it. The summer of 2026 made that gap visible: more than 15,000 ha of forest
+burned, more than 900 fires broke out in 72 hours, the grid failed in the same weeks, and a Cap
+Negro resident told us crews could not reach the fire by road. Qabs answers with low-cost sensing
+at ignition points and an escalation ladder that reaches residents who cannot read or have no
+phone, and its sirens keep sounding when the power and the network do not.
+What Phase 1 established.
+• A complete chain, not just a sensor: detection at the trail, graded confirmation, a
+LoRa network of its own, a backend that escalates, and a ladder that ends only when a
+person acknowledges the alert. The full decision chain already runs in a Node-RED/MQTT
+simulation.
+• Numbers that can be checked: a design target of about 15 s from crackle to Civil
+Protection, an average draw of 53.6 mA (68 mA conservative) against about 1,400 mAh a
+day from a 2 W panel, radio settings within the ANF limits, and a node at about 317 TND
+today and 200 TND on a custom board.
+• Three flaws caught on paper: gas-sensor energy use, radio power above the legal limit,
+and an AND gate that would have silently dropped real fires. All three were found and fixed
+before any hardware was built.
+• A design shaped by people: the Cap Negro testimony added an access point and a
+hard-to-reach flag to every alert, the illiteracy figures put sirens and voice before text, and
+privacy, equity and human decision are written in as design rules.
+Phase 2 demonstration plan (10 December 2026), ordered by the risk each step retires:
+1. Bench evidence: node current including the heater rail, IR range in sun and shade, flicker
+rejection, and classifier results with false alarms per hour.
+2. A recorded crackle and a small supervised flame trigger the full chain within one minute:
+alert, siren, voice call answered with 1, dashboard.
+3. A forest LoRa walk test; then three nodes, a solar gateway and a siren unit, with a fault
+demo (backhaul unplugged, the siren still sounds).
+After Phase 2. A 30-node pilot near Ain Draham, installed in April 2027 for a full fire
+season, will be judged against clear gates: at least 90% of blind test fires detected and reported
+within 5 minutes, at most one false siren per site, and node uptime of at least 95%. If it passes,
+the corridor follows in 2028, owned by the DGF and municipalities and run by local technicians
+and guards.
+Every forest fire starts as a single spark. Our aim is that the people around it know within
+seconds, not when the smoke reaches the horizon.
+26References
+[1] Asharq Al-Awsat, “95% of Tunisia’s wildfires due to
+human causes,” Jul. 2026. english.aawsat.com
+[2] Business News, “Incendies de forêt en Tunisie : plus de
+12.000 hectares détruits depuis le début de la saison,”
+31 Jul. 2026. businessnews.com.tn
+[3] Africanews, “Tunisia records 900 fires in 72-hour window
+during intense heatwave,” 25 Jul. 2026. africanews.com
+[4] S. Soudani, “Black-out historique en Tunisie : une nuit
+de chaleur, d’angoisse et de colère,” Le Courrier de
+l’Atlas, 15 Jul. 2026. lecourrierdelatlas.com
+[5] Kapitalis, “La Steg annonce la poursuite des coupures
+impromptues d’électricité,” 17 Jul. 2026. kapitalis.com
+[6] Webdo, “Coupures d’électricité : les régions concernées
+par le délestage de la STEG aujourd’hui,” 17 Jul. 2026.
+webdo.tn
+[7] WMC, “Crise électrique en Tunisie : l’été 2026 révèle
+la fracture structurelle entre demande record et sous-
+investissement,” 3 Aug. 2026. webmanagercenter.com
+[8] Selectra, “Coupures d’électricité en Algérie et en Tunisie
+: pourquoi le réseau a lâché en pleine canicule,” 15 Jul.
+2026. selectra.info
+[9] Africanews, “Tunisia: power cuts amid heatwave leave
+residents and businesses struggling,” 28 Jul. 2026.
+africanews.com
+[10] La Presse de Tunisie, “15.000 hectares de forêts ravagés
+par les feux : hausse spectaculaire des incendies de 500%
+par rapport à l’année dernière,” 12 Sep. 2026. lapresse.tn
+[11] EU External Action Service, “Tunisie : l’UE apporte
+son soutien aux populations touchées par les incendies
+dévastateurs,” 31 Aug. 2026. eeas.europa.eu
+[12] La Presse de Tunisie, “Tabarka : la foudre déclenche un
+incendie en pleine forêt,” 29 Apr. 2026. lapresse.tn
+[13] GDACS / Copernicus EMS, “Forest fire in Tunisia, 21–
+29 July 2026 (WF 1029649, EMSR903).” gdacs.org
+[14] GDACS, “Forest fire in Tunisia, 22–25 July 2026 (WF
+1029644), media digest.” gdacs.org
+[15] RTCI, “Forêts tunisiennes : 70 000 hectares détruits
+depuis 2011, un nouveau dispositif de prévention lancé,”
+9 Jun. 2026. rtci.tn
+[16] La Presse de Tunisie, “6 incendies majeurs en 15 jours
+: plus de 4 000 hectares de forêts partis en fumée,” 23
+Jul. 2026. lapresse.tn
+[17] Anadolu Agency, “Tunisia contains wildfire that burned
+more than 30 hectares of forest,” 15 Jul. 2026. aa.com.tr
+[18] Webdo, “La plupart des incendies forestiers survenus
+récemment sont d’origine humaine,” 11 Aug. 2021.
+webdo.tn
+[19] Nawaat, “Feux de forêts en Tunisie : l’été de tous les
+dangers,” 12 Jul. 2022. nawaat.org
+[20] Kapitalis, “Vers une surveillance numérique des in-
+cendies de forêt en Tunisie,” 20 Jun. 2026. kapitalis.com
+[21] Tunisie Numérique, “Cap Negro : après les flammes,
+place à la restauration de l’écosystème forestier,” 20
+Aug. 2026. tunisienumerique.com
+[22] La Presse de Tunisie, “Nefza : mobilisation maximale
+pour circonscrire une série d’incendies simultanés,” 28
+Aug. 2026. lapresse.tn
+[23] France 24, “Wildfires hound Tunisia, Algeria and Mo-
+rocco,” 24 Jul. 2026. france24.com
+[24] MedNatureCulture, “People & Cork: Kroumirie-
+Mogods.” mednatureculture.org
+[25] IUCN, “Kroumirie-Mogod territory, Tunisia: site sheet,”
+2023. iucn.org
+[26] Wikipedia, “Jendouba Governorate.” en.wikipedia.org
+[27] Business News, “Recensement 2024 : les profondes mu-
+tations de la Tunisie” (INS census results). business-
+news.com.tn
+[28] Freedom House, “Freedom on the Net 2024: Tunisia.”
+freedomhouse.org
+[29] La Presse de Tunisie, “Tunis : vers la mise en place
+d’un système d’alerte précoce face aux risques naturels,”
+5 Oct. 2026. lapresse.tn
+[30] “Wildfire detection using sound spectrum analysis based
+on the Internet of Things,” Sensors, vol. 19, no. 23, 5093,
+2019, doi: 10.3390/s19235093.
+[31] “Audio-based land and forest fire detection using con-
+volutional neural networks,” Computers, Materials &
+Continua, vol. 86, no. 1, 2025. techscience.com
+[32] K. Yedinak, “Listening to the flow: discoveries from
+wildland fire acoustics,” Lake States Fire Science Con-
+sortium webinar, Apr. 2020. lakestatesfiresci.net
+[33] M. Bandara, R. Jayasundara, I. Ariyarathne, D. Mee-
+deniya and C. Perera, “Forest Sound Classification
+Dataset: FSC22,” Sensors, vol. 23, no. 4, 2032, 2023,
+doi: 10.3390/s23042032.
+[34] “Experimental evaluation of a LoRa wildlife monitoring
+network in a forest vegetation area,” Future Internet,
+vol. 13, no. 5, 115, 2021, doi: 10.3390/fi13050115.
+[35] R. Ansah et al., “Characterising foliage influence on Lo-
+RaWAN pathloss in a tropical vegetative environment,”
+IET Wireless Sensor Systems, 2020, doi: 10.1049/iet-
+wss.2019.0201.
+[36] “Experimental comparison and empirical path loss
+modeling of LoRa communication in line-of-sight and
+forest environments at 923 MHz,” Sensors, 2026.
+pmc.ncbi.nlm.nih.gov
+[37] Hanwei Electronics, “MQ-5 gas sensor technical data.”
+files.seeedstudio.com
+[38] D. Morse, M. Cundy and H. Kytomaa, “Vehicle fires
+resulting from hot surface ignition of grass and leaves,”
+SAE Technical Paper 2017-01-1354, 2017. sae.org
+[39] W. L. Gore & Associates, “Science of protection:
+how the GORE-TEX membrane works.” goretexpro-
+fessional.com
+[40] Little Son, electronic components and robotics, Tunis:
+product pages and retail prices, accessed Oct. 2026.
+little-son.tn
+[41] R. Mischianti, “ESP32 practical power saving: manage
+WiFi and CPU,” 2021. mischianti.org
+[42] ANME (Agence Nationale pour la Maı̂trise de l’Énergie),
+“Solar photovoltaic,” with IRENA Global Atlas data.
+anme.tn
+[43] “Performances of PV systems in Tunisia,” International
+Journal of Renewable Energy Research. ijrer.com
+[44] CEPT/ECC, “ERC Recommendation 70-03: Relating
+to the use of Short Range Devices (SRD).”
+[45] ETSI, “EN 300 220: Short Range Devices (SRD) oper-
+ating in the frequency range 25 MHz to 1 000 MHz.”
+[46] STMicroelectronics, “Silvanet: an STM32WL can
+live 15 years outdoors to protect against forest fires.”
+blog.st.com
+[47] Dryad Networks, “Silvanet sensor density guidelines.”
+docs.dryad.app
+[48] Calcalist, “How a family trip to Greece inspired the
+next generation of firefighting technology,” 2026. calcal-
+istech.com
+[49] Webdo, “Un projet tuniso-italien pour détecter les in-
+cendies de forêt avant leur propagation,” 2026. webdo.tn
+[50] La Presse de Tunisie, “Tunisie–Italie : capteurs, satel-
+lites et IA au service de la lutte contre les incendies,” 2
+Jul. 2026. lapresse.tn
+[51] Promise BridgeTech, “Smart for Green: company pro-
+file.” promise-bridgetech.com
+[52] e7mini.org, “Surveillance des incendies, Tunisie (NASA
+FIRMS / VIIRS).” e7mini.org
+[53] Green Policy Platform, “Economic valuation of forest
+goods and services, Tunisia.” greenpolicyplatform.org
+[54] H. Daly-Hassen, “Economic evaluation of goods and
+services of Tunisian forests: summary note.” research-
+gate.net
+[55] Tunisie Numérique, “Taux de change des devises
+en dinar tunisien (BCT),” 24 Sep. 2026. tunisienu-
+merique.com
+27
