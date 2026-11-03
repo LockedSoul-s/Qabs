@@ -1,0 +1,57 @@
+{
+ "type": "FeatureCollection",
+ "name": "qabs_pilot_sirens",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.0134507,
+     37.0791304
+    ]
+   },
+   "properties": {
+    "name": "unnamed hamlet siren",
+    "type": "siren_hamlet",
+    "pop_2km": 401
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.1250267,
+     37.16164320000001
+    ]
+   },
+   "properties": {
+    "name": "Sidi Mechreg siren",
+    "type": "siren_hamlet",
+    "pop_2km": 583
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.2398493,
+     37.0576522
+    ]
+   },
+   "properties": {
+    "name": "Nefza siren",
+    "type": "siren_hamlet",
+    "pop_2km": 5445
+   }
+  }
+ ]
+}

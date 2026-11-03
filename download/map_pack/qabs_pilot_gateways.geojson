@@ -1,0 +1,60 @@
+{
+ "type": "FeatureCollection",
+ "name": "qabs_pilot_gateways",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.00873,
+     37.04984
+    ]
+   },
+   "properties": {
+    "id": "G1",
+    "type": "lora_gateway",
+    "elevation_m": 351,
+    "nearest_node_m": 3061
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.18216,
+     37.14795
+    ]
+   },
+   "properties": {
+    "id": "G2",
+    "type": "lora_gateway",
+    "elevation_m": 200,
+    "nearest_node_m": 1720
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.20429,
+     37.00459
+    ]
+   },
+   "properties": {
+    "id": "G3",
+    "type": "lora_gateway",
+    "elevation_m": 491,
+    "nearest_node_m": 2701
+   }
+  }
+ ]
+}

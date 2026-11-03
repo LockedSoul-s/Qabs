@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+  <name>qabs_pilot_sites</name>
+  <Style id="node"><IconStyle><color>ff1482e0</color><scale>0.9</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href></Icon></IconStyle></Style>
+  <Style id="gateway"><IconStyle><color>ffe07b1c</color><scale>1.3</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/star.png</href></Icon></IconStyle></Style>
+  <Style id="siren"><IconStyle><color>ff9a3d6a</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href></Icon></IconStyle></Style>
+    <Placemark>
+      <name>N01 sensor node</name>
+      <description>siting: 2; risk 72.5; link 0 m; gateway G1 at 3701 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.041350,37.070560,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N02 sensor node</name>
+      <description>siting: 2; risk 61.4; link 0 m; gateway G2 at 2418 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.168690,37.166900,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N03 sensor node</name>
+      <description>siting: 2; risk 69.7; link 0 m; gateway G3 at 4104 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.242570,37.025250,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N04 sensor node</name>
+      <description>siting: 0; risk 70.2; link 500 m; gateway G1 at 3606 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.036860,37.073270,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N05 sensor node</name>
+      <description>siting: 0; risk 68.4; link 282 m; gateway G1 at 3623 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.034610,37.075070,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N06 sensor node</name>
+      <description>siting: 2; risk 68.6; link 282 m; gateway G1 at 3342 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.032360,37.073270,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N07 sensor node</name>
+      <description>siting: 0; risk 64.1; link 500 m; gateway G1 at 3721 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.044730,37.066950,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N08 sensor node</name>
+      <description>siting: 1; risk 65.1; link 707 m; gateway G1 at 3511 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.045850,37.060640,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N09 sensor node</name>
+      <description>siting: 1; risk 61.3; link 282 m; gateway G1 at 3769 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.048100,37.062450,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N10 sensor node</name>
+      <description>siting: 1; risk 60.9; link 300 m; gateway G1 at 3891 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.048100,37.065150,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N11 sensor node</name>
+      <description>siting: 0; risk 61.0; link 640 m; gateway G1 at 4326 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.049230,37.071460,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N12 sensor node</name>
+      <description>siting: 1; risk 66.1; link 282 m; gateway G1 at 3061 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.030110,37.071470,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N13 sensor node</name>
+      <description>siting: 0; risk 61.3; link 282 m; gateway G2 at 2692 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.166440,37.168710,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N14 sensor node</name>
+      <description>siting: 0; risk 72.3; link 894 m; gateway G3 at 3354 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.238050,37.018050,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N15 sensor node</name>
+      <description>siting: 0; risk 72.5; link 608 m; gateway G3 at 2778 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.231310,37.017160,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N16 sensor node</name>
+      <description>siting: 0; risk 72.6; link 316 m; gateway G3 at 3324 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.239170,37.015340,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N17 sensor node</name>
+      <description>siting: 0; risk 70.0; link 316 m; gateway G3 at 4031 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.243690,37.022540,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N18 sensor node</name>
+      <description>siting: 0; risk 70.4; link 282 m; gateway G3 at 3623 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.240310,37.019840,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N19 sensor node</name>
+      <description>siting: 0; risk 68.7; link 300 m; gateway G3 at 3088 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.234680,37.018050,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N20 sensor node</name>
+      <description>siting: 0; risk 67.9; link 360 m; gateway G3 at 2780 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.229070,37.019870,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N21 sensor node</name>
+      <description>siting: 0; risk 64.6; link 640 m; gateway G3 at 2701 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.223460,37.023480,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N22 sensor node</name>
+      <description>siting: 0; risk 64.7; link 282 m; gateway G3 at 2758 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.226820,37.021670,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N23 sensor node</name>
+      <description>siting: 2; risk 47.5; link 728 m; gateway G2 at 1720 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.170920,37.160590,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N24 sensor node</name>
+      <description>siting: 0; risk 60.1; link 316 m; gateway G2 at 3001 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.165320,37.171410,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N25 sensor node</name>
+      <description>siting: 2; risk 44.4; link 316 m; gateway G2 at 1984 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.167550,37.161490,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N26 sensor node</name>
+      <description>siting: 2; risk 43.3; link 500 m; gateway G2 at 2080 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.163040,37.158800,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N27 sensor node</name>
+      <description>siting: 2; risk 44.6; link 282 m; gateway G2 at 1788 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.173180,37.162390,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N28 sensor node</name>
+      <description>siting: 2; risk 43.9; link 565 m; gateway G2 at 2247 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.158520,37.155200,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N29 sensor node</name>
+      <description>siting: 2; risk 46.1; link 282 m; gateway G2 at 2376 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.156270,37.153400,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>N30 sensor node</name>
+      <description>siting: 2; risk 42.5; link 316 m; gateway G2 at 2012 m</description>
+      <styleUrl>#node</styleUrl>
+      <Point><coordinates>9.161900,37.156090,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>G1 LoRa gateway</name>
+      <description>elevation 351 m; nearest node 3061 m</description>
+      <styleUrl>#gateway</styleUrl>
+      <Point><coordinates>9.008730,37.049840,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>G2 LoRa gateway</name>
+      <description>elevation 200 m; nearest node 1720 m</description>
+      <styleUrl>#gateway</styleUrl>
+      <Point><coordinates>9.182160,37.147950,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>G3 LoRa gateway</name>
+      <description>elevation 491 m; nearest node 2701 m</description>
+      <styleUrl>#gateway</styleUrl>
+      <Point><coordinates>9.204290,37.004590,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>unnamed hamlet siren</name>
+      <description>population ~401 within 2 km; 110 dB unit, ~70 dB at 100 m</description>
+      <styleUrl>#siren</styleUrl>
+      <Point><coordinates>9.013451,37.079130,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Sidi Mechreg siren</name>
+      <description>population ~583 within 2 km; 110 dB unit, ~70 dB at 100 m</description>
+      <styleUrl>#siren</styleUrl>
+      <Point><coordinates>9.125027,37.161643,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Nefza siren</name>
+      <description>population ~5445 within 2 km; 110 dB unit, ~70 dB at 100 m</description>
+      <styleUrl>#siren</styleUrl>
+      <Point><coordinates>9.239849,37.057652,0</coordinates></Point>
+    </Placemark>
+</Document></kml>
